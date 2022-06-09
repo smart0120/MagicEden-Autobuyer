@@ -32,7 +32,7 @@
 "seedPhrase": "your seed phrase from Phantom Wallet (Do Not Share This KEY)",
 "password": "your password",
 "collectionName" : "Collection name example: DeGods",
-"willingPrice": "preferred buying price,
+"willingPrice": 399 (preferred buying price),
 "cooldown": 15 - minutes (How long will the bot wait for the next attempt),
 "closeBrowser": true (Close browser after buying, false - No)
 }
@@ -80,7 +80,7 @@
 "seedPhrase": "Ваш passphrase от Phantom" - (Никуда не публикуйте эту фразу),
 "password": "Пароль для вашего кошелька",
 "collectionName" : "Имя коллекции, например: DeGods",
-"willingPrice": "Желаемая цена покупки",
+"willingPrice": 399 (Желаемая цена покупки),
 "cooldown": 15 - минут (Как долго будет ждать бот перед следующей попыткой),
 "closeBrowser": true (Закрыть браузер после покупки, false - Нет)
 }
