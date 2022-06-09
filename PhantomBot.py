@@ -11,7 +11,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 
 class PhantomBot:
-    def __init_(self, config):
+    def __init__(self, config):
         self.config = config
     
     @staticmethod
