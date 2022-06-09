@@ -44,7 +44,7 @@ class PhantomBot:
         WebDriverWait(driver, 120).until(EC.presence_of_element_located(
             (By.XPATH, "//*[@id='word_0']")))
         for i in range(0, 12):
-            driver.find_element(By.XPATH, f"//*[@id='word_{i}']").send_keys(config["seedPhrase"].split(' ')[i])
+            driver.find_element(By.XPATH, f"//*[@id='word_{i}']").send_keys(self.config["seedPhrase"].split(' ')[i])
         driver.find_element(By.XPATH, "//button[@type='submit']").click()
 
         time.sleep(5)
@@ -54,9 +54,9 @@ class PhantomBot:
         WebDriverWait(driver, 120).until(EC.presence_of_element_located(
             (By.XPATH, "//input[@placeholder='Password']")))
         driver.find_element(
-            By.XPATH, "//input[@placeholder='Password']").send_keys(config["password"])
+            By.XPATH, "//input[@placeholder='Password']").send_keys(self.config["password"])
         driver.find_element(
-            By.XPATH, "//input[@placeholder='Confirm Password']").send_keys(config["password"])
+            By.XPATH, "//input[@placeholder='Confirm Password']").send_keys(self.config["password"])
         driver.find_element(
             By.XPATH, "//input[@type='checkbox']").click()
         driver.find_element(
