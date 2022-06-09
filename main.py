@@ -6,7 +6,7 @@ from Scraper import Scraper
 
 CONFIG = json.load(open('config.json'))
 
-BOT = PhantomBot()
+BOT = PhantomBot(CONFIG)
 SCRAPER = Scraper(CONFIG)
 
 COOLDOWN = 60 * CONFIG['cooldown']

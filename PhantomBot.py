@@ -11,6 +11,9 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 
 class PhantomBot:
+    def __init_(self, config):
+        self.config = config
+    
     @staticmethod
     def setupDriver():
         options = Options()
@@ -41,8 +44,7 @@ class PhantomBot:
         WebDriverWait(driver, 120).until(EC.presence_of_element_located(
             (By.XPATH, "//*[@id='word_0']")))
         for i in range(0, 12):
-            driver.find_element(By.XPATH, f"//*[@id='word_{i}']").send_keys(
-                'wet employ trouble nut kiss arrange fragile depend vocal void unknown travel'.split(' ')[i])
+            driver.find_element(By.XPATH, f"//*[@id='word_{i}']").send_keys(config["seedPhrase"].split(' ')[i])
         driver.find_element(By.XPATH, "//button[@type='submit']").click()
 
         time.sleep(5)
@@ -52,9 +54,9 @@ class PhantomBot:
         WebDriverWait(driver, 120).until(EC.presence_of_element_located(
             (By.XPATH, "//input[@placeholder='Password']")))
         driver.find_element(
-            By.XPATH, "//input[@placeholder='Password']").send_keys('123456788')
+            By.XPATH, "//input[@placeholder='Password']").send_keys(config["password"])
         driver.find_element(
-            By.XPATH, "//input[@placeholder='Confirm Password']").send_keys('123456788')
+            By.XPATH, "//input[@placeholder='Confirm Password']").send_keys(config["password"])
         driver.find_element(
             By.XPATH, "//input[@type='checkbox']").click()
         driver.find_element(
