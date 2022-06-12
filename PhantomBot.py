@@ -25,7 +25,6 @@ class PhantomBot:
         options.add_experimental_option("prefs", prefs)
         options.add_experimental_option("excludeSwitches", ["enable-logging"])
 
-        # options for chrome install | Разрешение на установку расширения
         os.environ['WDM8LOCAL'] = '1'
 
         driver = webdriver.Chrome(
@@ -38,9 +37,9 @@ class PhantomBot:
         driver.switch_to.window(driver.window_handles[1])
 
         WebDriverWait(driver, 120).until(EC.presence_of_element_located(
-            (By.XPATH, "//button[contains(text(),'I already have a wallet')]")))
+            (By.XPATH, "//*[@id='root']/main/div[2]/div/div[2]/button[2]")))
         driver.find_element(
-            By.XPATH, "//button[contains(text(),'I already have a wallet')]").click()
+            By.XPATH, "//*[@id='root']/main/div[2]/div/div[2]/button[2]").click()
         WebDriverWait(driver, 120).until(EC.presence_of_element_located(
             (By.XPATH, "//*[@id='word_0']")))
         for i in range(0, 12):
@@ -52,11 +51,11 @@ class PhantomBot:
             By.XPATH, "//button[@type='submit']").click()
 
         WebDriverWait(driver, 120).until(EC.presence_of_element_located(
-            (By.XPATH, "//input[@placeholder='Password']")))
+            (By.XPATH, "//*[@id='root']/main/div[2]/form/div/div/div[2]/input")))
         driver.find_element(
-            By.XPATH, "//input[@placeholder='Password']").send_keys(self.config["password"])
+            By.XPATH, "//*[@id='root']/main/div[2]/form/div/div/div[2]/input").send_keys(self.config["password"])
         driver.find_element(
-            By.XPATH, "//input[@placeholder='Confirm Password']").send_keys(self.config["password"])
+            By.XPATH, "//*[@id='root']/main/div[2]/form/div/div/div[2]/div/div/input").send_keys(self.config["password"])
         driver.find_element(
             By.XPATH, "//input[@type='checkbox']").click()
         driver.find_element(
@@ -64,11 +63,11 @@ class PhantomBot:
 
         time.sleep(5)
         driver.find_element(
-            By.XPATH, "//button[contains(text(),'Continue')]").click()
+            By.XPATH, "//*[@id='root']/main/div[2]/form/button").click()
 
         time.sleep(5)
         driver.find_element(
-            By.XPATH, "//button[contains(text(),'Finish')]").click()
+            By.XPATH, "//*[@id='root']/main/div[2]/form/button").click()
 
         driver.switch_to.window(driver.window_handles[0])
         print('Done\n')
@@ -92,9 +91,9 @@ class PhantomBot:
         driver.switch_to.window(driver.window_handles[1])
 
         WebDriverWait(driver, 120).until(EC.presence_of_element_located(
-            (By.XPATH, "//button[contains(text(),'Connect')]")))
+            (By.XPATH, "//*[@id='root']/div/div[1]/div[2]/div/button[2]")))
         popup = driver.find_element(
-            By.XPATH, "//button[contains(text(),'Connect')]")
+            By.XPATH, "//*[@id='root']/div/div[1]/div[2]/div/button[2]")
         popup.click()
         driver.switch_to.window(driver.window_handles[0])
         print("Done\n")
