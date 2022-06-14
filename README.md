@@ -50,7 +50,7 @@
 ------------
 ### Good luck to all.
 ------------
-###### You can support me with some SOL : HDyFGcPa6HNoeER4zcrvJfA5XWB3TKHUoG3u4sJU5JLP
+###### You can support me with some SOL : 5ExvsyA8dBZvanEh2qncekmdsekFLbEDUX2wScmmqJ7e
 ###### You can support me with some BUSD (BSC) : 0xBfB65cE5Dd3766d75801f2CC2eEA4CDcC5A96Cc5
 
 ------------
@@ -98,7 +98,7 @@
 ------------
 ### Хороших всем покупок.
 ------------
-###### Вы можете поддержать меня SOL : HDyFGcPa6HNoeER4zcrvJfA5XWB3TKHUoG3u4sJU5JLP
+###### Вы можете поддержать меня SOL : 5ExvsyA8dBZvanEh2qncekmdsekFLbEDUX2wScmmqJ7e
 ###### Вы можете поддержать меня BUSD (BSC) : 0xBfB65cE5Dd3766d75801f2CC2eEA4CDcC5A96Cc5
 
 ------------
