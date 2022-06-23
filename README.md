@@ -50,10 +50,6 @@
 ------------
 ### Good luck to all.
 ------------
-###### You can support me with some SOL : 5ExvsyA8dBZvanEh2qncekmdsekFLbEDUX2wScmmqJ7e
-###### You can support me with some BUSD (BSC) : 0xBfB65cE5Dd3766d75801f2CC2eEA4CDcC5A96Cc5
-
-------------
 
 ## RU
 > Этот бот поможет купить НФТ из нужной коллекции **по самой низкой цене**.
@@ -97,8 +93,3 @@
 
 ------------
 ### Хороших всем покупок.
-------------
-###### Вы можете поддержать меня SOL : 5ExvsyA8dBZvanEh2qncekmdsekFLbEDUX2wScmmqJ7e
-###### Вы можете поддержать меня BUSD (BSC) : 0xBfB65cE5Dd3766d75801f2CC2eEA4CDcC5A96Cc5
-
-------------
