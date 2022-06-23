@@ -93,3 +93,7 @@
 
 ------------
 ### Хороших всем покупок.
+
+### TODO:
+1. Async
+2. Check if NFT was bought without errors
