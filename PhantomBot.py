@@ -11,9 +11,10 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 
 class PhantomBot:
-    def __init__(self, config):
+    def __init__(self, config, elements):
         self.config = config
-    
+        self.elements = elements
+
     @staticmethod
     def setupDriver():
         options = Options()
@@ -27,8 +28,7 @@ class PhantomBot:
 
         os.environ['WDM8LOCAL'] = '1'
 
-        driver = webdriver.Chrome(
-            executable_path=ChromeDriverManager().install(), options=options)
+        driver = webdriver.Chrome(executable_path=ChromeDriverManager().install(), options=options)
 
         return driver
 
@@ -36,64 +36,49 @@ class PhantomBot:
         print("Init wallet...")
         driver.switch_to.window(driver.window_handles[1])
 
-        WebDriverWait(driver, 120).until(EC.presence_of_element_located(
-            (By.XPATH, "//*[@id='root']/main/div[2]/div/div[2]/button[2]")))
-        driver.find_element(
-            By.XPATH, "//*[@id='root']/main/div[2]/div/div[2]/button[2]").click()
-        WebDriverWait(driver, 120).until(EC.presence_of_element_located(
-            (By.XPATH, "//*[@id='word_0']")))
+        WebDriverWait(driver, 120).until(EC.presence_of_element_located((By.XPATH, self.elements['phantom']['importButton'])))
+        driver.find_element(By.XPATH, self.elements['phantom']['importButton']).click()
+        WebDriverWait(driver, 120).until(EC.presence_of_element_located((By.XPATH, "//*[@id='word_0']")))
         for i in range(0, 12):
             driver.find_element(By.XPATH, f"//*[@id='word_{i}']").send_keys(self.config["seedPhrase"].split(' ')[i])
-        driver.find_element(By.XPATH, "//button[@type='submit']").click()
+        driver.find_element(By.XPATH, self.elements['phantom']['submitButton']).click()
 
         time.sleep(5)
-        driver.find_element(
-            By.XPATH, "//button[@type='submit']").click()
+        driver.find_element(By.XPATH, self.elements['phantom']['submitButton']).click()
 
-        WebDriverWait(driver, 120).until(EC.presence_of_element_located(
-            (By.XPATH, "//*[@id='root']/main/div[2]/form/div/div/div[2]/input")))
-        driver.find_element(
-            By.XPATH, "//*[@id='root']/main/div[2]/form/div/div/div[2]/input").send_keys(self.config["password"])
-        driver.find_element(
-            By.XPATH, "//*[@id='root']/main/div[2]/form/div/div/div[2]/div/div/input").send_keys(self.config["password"])
-        driver.find_element(
-            By.XPATH, "//input[@type='checkbox']").click()
-        driver.find_element(
-            By.XPATH, "//button[@type='submit']").click()
+        WebDriverWait(driver, 120).until(EC.presence_of_element_located((By.XPATH, self.elements['phantom']['passwordField'])))
+        driver.find_element(By.XPATH, self.elements['phantom']['passwordField']).send_keys(self.config["password"])
+        driver.find_element(By.XPATH, self.elements['phantom']['confirmPasswordField']).send_keys(self.config["password"])
+        driver.find_element(By.XPATH, self.elements['phantom']['checkbox']).click()
+        driver.find_element(By.XPATH, self.elements['phantom']['submitButton']).click()
 
         time.sleep(5)
-        driver.find_element(
-            By.XPATH, "//*[@id='root']/main/div[2]/form/button").click()
+        driver.find_element(By.XPATH, self.elements['phantom']['continueButton']).click()
 
         time.sleep(5)
-        driver.find_element(
-            By.XPATH, "//*[@id='root']/main/div[2]/form/button").click()
+        driver.find_element(By.XPATH, self.elements['phantom']['continueButton']).click()
 
         driver.switch_to.window(driver.window_handles[0])
         print('Done\n')
 
     def selectWallet(self, driver):
         print("Selecting wallet...")
-        WebDriverWait(driver, 120).until(EC.presence_of_element_located(
-            (By.XPATH, "//button[contains(text(), 'Select Wallet')]")))
-        main_wallet = driver.find_element(
-            By.XPATH, "//button[contains(text(), 'Select Wallet')]")
+        WebDriverWait(driver, 60).until(EC.presence_of_element_located((By.XPATH, self.elements['magiceden']['connectWallet'])))
+        main_wallet = driver.find_element(By.XPATH, self.elements['magiceden']['connectWallet'])
         main_wallet.click()
 
-        WebDriverWait(driver, 120).until(EC.presence_of_element_located(
-            (By.XPATH, "//button[contains(text(),'Phantom')]")))
-        phantomExtension = driver.find_element(
-            By.XPATH, "//button[contains(text(),'Phantom')]")
+        WebDriverWait(driver, 60).until(
+            EC.presence_of_element_located((By.XPATH, self.elements['magiceden']['phantomWallet'])))
+        phantomExtension = driver.find_element(By.XPATH, self.elements['magiceden']['phantomWallet'])
         phantomExtension.click()
 
-        WebDriverWait(driver, 120).until(EC.number_of_windows_to_be(2))
+        WebDriverWait(driver, 60).until(EC.number_of_windows_to_be(2))
 
         driver.switch_to.window(driver.window_handles[1])
 
-        WebDriverWait(driver, 120).until(EC.presence_of_element_located(
-            (By.XPATH, "//*[@id='root']/div/div[1]/div[2]/div/button[2]")))
-        popup = driver.find_element(
-            By.XPATH, "//*[@id='root']/div/div[1]/div[2]/div/button[2]")
+        WebDriverWait(driver, 60).until(
+            EC.presence_of_element_located((By.XPATH, self.elements['magiceden']['popup']['connectButton'])))
+        popup = driver.find_element(By.XPATH, self.elements['magiceden']['popup']['connectButton'])
         popup.click()
         driver.switch_to.window(driver.window_handles[0])
         print("Done\n")
@@ -102,17 +87,14 @@ class PhantomBot:
         print('Making purchase...')
 
         driver.get(url)
-
-        WebDriverWait(driver, 120).until(EC.presence_of_element_located(
-            (By.XPATH, '//*[@id="content"]/section/div[2]/div[1]/div[2]/div/div[3]/div[3]/div/div/div/button[1]')))
-        driver.find_element(By.XPATH,
-                            '//*[@id="content"]/section/div[2]/div[1]/div[2]/div/div[3]/div[3]/div/div/div/button[1]').click()
+        WebDriverWait(driver, 120).until(EC.presence_of_element_located((By.XPATH, self.elements['magiceden']['buyButton'])))
+        driver.find_element(By.XPATH,self.elements['magiceden']['buyButton']).click()
 
         WebDriverWait(driver, 120).until(EC.number_of_windows_to_be(2))
         driver.switch_to.window(driver.window_handles[1])
 
-        WebDriverWait(driver, 120).until(EC.presence_of_element_located((By.XPATH, '//button[@type="submit"]')))
-        driver.find_element(By.XPATH, '//button[@type="submit"]').click()
+        WebDriverWait(driver, 120).until(EC.presence_of_element_located((By.XPATH, self.elements['magiceden']['popup']['approveButton'])))
+        driver.find_element(By.XPATH, self.elements['magiceden']['popup']['approveButton']).click()
 
         WebDriverWait(driver, 120).until(EC.number_of_windows_to_be(1))
         time.sleep(5)

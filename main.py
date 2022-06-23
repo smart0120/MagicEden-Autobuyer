@@ -5,8 +5,9 @@ from PhantomBot import PhantomBot
 from Scraper import Scraper
 
 CONFIG = json.load(open('config.json'))
+ELEMENTS = json.load(open('elements.json'))
 
-BOT = PhantomBot(CONFIG)
+BOT = PhantomBot(CONFIG, ELEMENTS)
 SCRAPER = Scraper(CONFIG)
 
 COOLDOWN = 60 * CONFIG['cooldown']
@@ -15,6 +16,7 @@ if __name__ == "__main__":
     driver = BOT.setupDriver()
 
     driver.get("https://www.magiceden.io/")
+    driver.maximize_window()
 
     BOT.initWallet(driver)
     BOT.selectWallet(driver)
@@ -25,9 +27,7 @@ if __name__ == "__main__":
         for collection in collections:
             if CONFIG['collectionName'] == collection['name']:
                 listings = SCRAPER.getListing(collection['symbol'])
-                print(f"Found: {collection['symbol']}")
         eligibleListings, listingPrices = SCRAPER.getEligibleListings(listings)
-
         if len(listingPrices) > 0:
             lowestPrice = min(listingPrices)
             bestOffer = str()

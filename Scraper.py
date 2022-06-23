@@ -26,7 +26,7 @@ class Scraper:
         return collections
 
     def getListing(self, symbol):
-        print('Getting all the NFT from the marketplace...')
+        print(f'Getting all listed NFTs from collection [{self.config["collectionName"]}]...')
 
         listings = list()
         counter = 0
