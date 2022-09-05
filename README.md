@@ -10,6 +10,8 @@
 ## EN
 > This bot will help to buy NFT from the desired collection **at the lowest price**.
 
+**ONLY WINDOWS for now, If the script at the beginning switches the window to MagicEden or only one window with Phantom Wallet is loaded, please restart the script**
+
 **This bot does not guarantee you will buy NFT**, this bot simply goes faster than humans and automates everything since you do not have to click yourself.
 
 ### Tutorial
@@ -53,6 +55,8 @@ PASSWORD=13372281111MEOW (Password from your Phantom Wallet)
 
 ## RU
 > Этот бот поможет купить НФТ из нужной коллекции **по самой низкой цене**.
+
+**ПОКА ЧТО СКРИПТ РАБОТАЕТ ТОЛЬКО НА WINDOWS, если скрипт в начале переключает окно на MagicEden или загружается только одно окно с Phantom Wallet, пожалуйста, перезапустите скрипт**
 
 **Этот бот не гарантирует вам 100% покупку НФТ**, он просто делает все быстрее, чем человек. Вы просто запускаете бота и ждете.
 
