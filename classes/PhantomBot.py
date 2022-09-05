@@ -88,15 +88,17 @@ class PhantomBot:
 
         time.sleep(2)
         self.__selectElement(self.elements['magiceden']['phantomWallet'], True, driver)
-
-        WebDriverWait(driver, 60).until(EC.number_of_windows_to_be(2))
-        driver.switch_to.window(driver.window_handles[1])
-
         time.sleep(2)
-        self.__selectElement(self.elements['magiceden']['popup']['connectButton'], True, driver)
 
-        driver.switch_to.window(driver.window_handles[0])
-        cPrint("Done\n", Fore.YELLOW)
+        if len(driver.window_handles) >= 2:
+            WebDriverWait(driver, 60).until(EC.number_of_windows_to_be(2))
+            driver.switch_to.window(driver.window_handles[1])
+
+            time.sleep(2)
+            self.__selectElement(self.elements['magiceden']['popup']['connectButton'], True, driver)
+
+            driver.switch_to.window(driver.window_handles[0])
+            cPrint("Done\n", Fore.YELLOW)
 
     def makePurchase(self, driver: webdriver.Chrome, url: str) -> None:
         try:
