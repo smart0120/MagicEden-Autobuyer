@@ -49,7 +49,7 @@ class PhantomBot:
             el.click()
 
     def initWallet(self, driver: webdriver.Chrome) -> None:
-        cPrint("\nInit wallet...", Fore.YELLOW)
+        cPrint("Init wallet...", Fore.YELLOW)
 
         driver.switch_to.window(driver.window_handles[1])
 
