@@ -1,6 +1,8 @@
 # Magic Eden bot for mint
 ###### Created by Galiaf
-
+------------
+![Alt text](/screenshots/Screenshot_1.png?raw=true "Screenshot 1")
+![Alt text](/screenshots/Screenshot_2.png?raw=true "Screenshot 2")
 ------------
 - **[EN](https://github.com/Galiafer/MagicEden-Autobuyer#en)**
 - **[RU](https://github.com/Galiafer/MagicEden-Autobuyer#ru)**
