@@ -4,7 +4,7 @@
 ------------
 - **[EN](https://github.com/Galiafer/MagicEden-Autobuyer#en)**
 - **[RU](https://github.com/Galiafer/MagicEden-Autobuyer#ru)**
-
+- **[TODO](https://github.com/Galiafer/MagicEden-Autobuyer#todo)**
 ------------
 
 ## EN
@@ -29,23 +29,23 @@
 5. Fill in all the data in `config.json`:
 ```json
 {
-"seedPhrase": "your seed phrase from Phantom Wallet (Do Not Share This KEY)",
-"password": "your password",
-"collectionName" : "Collection name example: DeGods",
-"willingPrice": 399 (preferred buying price),
 "cooldown": 15 - minutes (How long will the bot wait for the next attempt),
 "closeBrowser": true (Close browser after buying, false - No)
 }
 ```
+6. Fill in all the data in `.env` (But before rename .env-sample to .env):
+```json
+FILL EVERYTHING WITHOUT QUOTES
 
-6. Open **CMD** and go to directory:
+SEED_PHRASE=YOUR_SEED_PHRASE (Do Not Share This KEY)
+PASSWORD=13372281111MEOW (Password from your Phantom Wallet)
+```
+7. Open **CMD** and go to directory:
  `cd /path/to/directory/`
 
-7. Run the python file:
+8. Run the python file:
 
-	windows : `python main.py`
-
-	mac : `python3 main.py`
+    windows : `python main.py`
 
 ------------
 ### Good luck to all.
@@ -73,27 +73,28 @@
 5. Заполните все необходимые поля в файле `config.json`:
 ```json
 {
-"seedPhrase": "Ваш passphrase от Phantom" - (Никуда не публикуйте эту фразу),
-"password": "Пароль для вашего кошелька",
-"collectionName" : "Имя коллекции, например: DeGods",
-"willingPrice": 399 (Желаемая цена покупки),
 "cooldown": 15 - минут (Как долго будет ждать бот перед следующей попыткой),
 "closeBrowser": true (Закрыть браузер после покупки, false - Нет)
 }
 ```
+6. Заполните данные в `.env` (Но перед этим измените название файла с .env-sample на .env):
+```json
+ЗАПОЛНЯТЬ БЕЗ КАВЫЧЕК
 
-6. Откройте **CMD** (командную строку) и перейдите в директорию проекта:
+SEED_PHRASE=ВАША_СИД_ФРАЗА (Никуда не публикуйте эту фразу)
+PASSWORD=13372281111MEOW (Пароль от кошелька)
+```
+7. Откройте **CMD** (командную строку) и перейдите в директорию проекта:
  `cd /path/to/directory/`
 
-7. Запустите файл:
+8. Запустите файл:
 
-	windows : `python main.py`
-
-	mac : `python3 main.py`
+    windows : `python main.py`
 
 ------------
 ### Хороших всем покупок.
 
-### TODO:
-1. Async
-2. Check if NFT was bought without errors
+## TODO:
+1. Multisniping (Multi-collection sniping at the same time)
+2. Multiaccounts
+3. Snipe a certain amount of nft (Now you can only buy one nft)
