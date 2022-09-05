@@ -117,7 +117,7 @@ class PhantomBot:
             WebDriverWait(driver, 120).until(EC.number_of_windows_to_be(1))
             time.sleep(5)
 
-            cPrint(f"Success!\nYour purchase - {url}", Fore.GREEN)
+            cPrint(f"Success! Your purchase - {url}", Fore.GREEN)
         except Exception as err:
             cPrint(f"An error has occurred: {err}", Fore.RED)
         finally:
