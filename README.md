@@ -1,4 +1,4 @@
-# Magic Eden bot for mint
+# Magic Eden Bot to Snipe the best offers
 ###### Created by Galiaf
 ------------
 ![Alt text](/screenshots/Screenshot_1.png?raw=true "Screenshot 1")
