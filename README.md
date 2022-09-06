@@ -104,3 +104,4 @@ PASSWORD=13372281111MEOW (Пароль от кошелька)
 1. Multisniping (Multi-collection sniping at the same time)
 2. Multiaccounts
 3. Snipe a certain amount of nft (Now you can only buy one nft)
+4. Telegram Notification
