@@ -1,48 +1,64 @@
 import time
 
 from colorama import Fore
+from selenium.webdriver.chrome.webdriver import WebDriver
 
-from classes import PhantomBot
-from classes import Scraper
-from helpers.utils import cPrint, isListingsOk
+from config import user_config
+from internal.magiceden import MagicEden
+from internal.phantom import Phantom
+from pkg import init_yaml, c_print
 
-from config import COOLDOWN
 
-BOT = PhantomBot()
-SCRAPER = Scraper()
-
-if __name__ == "__main__":
-    driver = BOT.setupDriver()
-
-    driver.get("https://www.magiceden.io/")
-    driver.maximize_window()
-
-    BOT.initWallet(driver)
-    BOT.selectWallet(driver)
-
+def start_buying(magiceden: MagicEden, phantom: Phantom, driver: WebDriver) -> None:
     while True:
-        listings = SCRAPER.getListings()
-        eligibleListings, listingPrices = SCRAPER.getEligibleListings(listings)
+        listings = magiceden.get_listings()
+        eligible_listings, listing_prices = magiceden.get_eligible_listings(listings)
 
-        if isListingsOk(eligibleListings, listingPrices):
-            lowestPrice = min(listingPrices)
-            bestOffer = str()
+        if magiceden.is_listings_ok(eligible_listings, listing_prices):
+            lowest_price = min(listing_prices)
+            best_offer = str()
 
-            for listing in eligibleListings:
-                if float(listing['price']) == float(lowestPrice):
-                    bestOffer = f'https://www.magiceden.io/item-details/{listing["tokenMint"]}'
+            for listing in eligible_listings:
+                if float(listing['price']) == float(lowest_price):
+                    best_offer = f'https://www.magiceden.io/item-details/{listing.get("tokenMint")}'
 
-            if len(bestOffer) > 0:
-                cPrint(f'Found the best offer - {bestOffer}', Fore.GREEN)
+            if len(best_offer) > 0:
+                c_print(f'Found the best offer - {best_offer}', Fore.GREEN)
                 try:
-                    pass
-                    BOT.makePurchase(driver, bestOffer)
+                    phantom.make_purchase(driver, best_offer)
                 except Exception as err:
-                    cPrint(f'Unable to purchase: {err}', Fore.RED)
+                    c_print(f'Unable to purchase: {err}', Fore.RED)
                 finally:
                     break
             else:
-                cPrint("Couldn't find a suitable offer", Fore.YELLOW)
-                cPrint(f"Next try in {COOLDOWN / 60} minutes", Fore.YELLOW)
+                c_print("Couldn't find a suitable offer", Fore.YELLOW)
+                c_print(f"Next try in {user_config.get('cooldown') / 60} minutes", Fore.YELLOW)
 
-                time.sleep(COOLDOWN)
+                time.sleep(user_config.get("cooldown"))
+        else:
+            c_print("Couldn't find a suitable offer", Fore.YELLOW)
+            c_print(f"Next try in {user_config.get('cooldown') / 60} minutes", Fore.YELLOW)
+
+            time.sleep(user_config.get("cooldown"))
+
+
+def main():
+    service_config = init_yaml()
+
+    phantom = Phantom(service_config, user_config)
+
+    driver = phantom.setup_driver()
+
+    phantom.init_wallet(driver)
+
+    driver.get(user_config.get("collection_url"))
+
+    phantom.select_wallet(driver)
+
+    magiceden = MagicEden(user_config)
+
+    start_buying(magiceden, phantom, driver)
+
+
+if __name__ == "__main__":
+    main()

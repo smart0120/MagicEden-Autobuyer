@@ -12,7 +12,9 @@
 ## EN
 > This bot will help to buy NFT from the desired collection **at the lowest price**.
 
-**ONLY WINDOWS for now, If the script at the beginning switches the window to MagicEden or only one window with Phantom Wallet is loaded, please restart the script**
+> Windows + MacOS
+
+**If script stuck on selecting a wallet then press the button yourself**
 
 **This bot does not guarantee you will buy NFT**, this bot simply goes faster than humans and automates everything since you do not have to click yourself.
 
@@ -30,14 +32,14 @@
 4. Install **all python module**:
 
    `pip install -r requirements.txt`
-5. Fill in all the data in `config.json`:
+5. Fill in all the data in `config/config.json`:
 ```json
 {
 "cooldown": 15 - minutes (How long will the bot wait for the next attempt),
 "closeBrowser": true (Close browser after buying, false - No)
 }
 ```
-6. Fill in all the data in `.env` (But before rename .env-sample to .env):
+6. Fill in all the data in `config/.env` (But before rename .env-sample to .env):
 ```json
 FILL EVERYTHING WITHOUT QUOTES
 
@@ -58,7 +60,9 @@ PASSWORD=13372281111MEOW (Password from your Phantom Wallet)
 ## RU
 > Этот бот поможет купить НФТ из нужной коллекции **по самой низкой цене**.
 
-**ПОКА ЧТО СКРИПТ РАБОТАЕТ ТОЛЬКО НА WINDOWS, если скрипт в начале переключает окно на MagicEden или загружается только одно окно с Phantom Wallet, пожалуйста, перезапустите скрипт**
+> Windows + MacOS
+
+**Если скрипт скрипт застрял на выборе кошелька, то нажмите кнопку самостоятельно**
 
 **Этот бот не гарантирует вам 100% покупку НФТ**, он просто делает все быстрее, чем человек. Вы просто запускаете бота и ждете.
 
