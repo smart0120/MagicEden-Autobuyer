@@ -21,7 +21,7 @@ class MagicEden:
         counter = 0
 
         while True:
-            response = requests.get(self.baseUrl + f'collections/{symbol}/listings?offset={counter}').json()
+            response = requests.get(self.baseUrl + f'collections/{symbol}/listings?offset={counter}', timeout=60).json(timeout=60)
             if len(response) < 1:
                 break
 
