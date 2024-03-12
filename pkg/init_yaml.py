@@ -10,4 +10,4 @@ def init_yaml() -> dict:
                                         "../internal/serviceConfig/config.yml")
 
     with open(__path_to_yml_config) as config:
-        return yaml.load(config, Loader=Loader)
+        return yaml.load(config, Loader=yaml.SafeLoader)
