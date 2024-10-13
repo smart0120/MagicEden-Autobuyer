@@ -1,7 +1,7 @@
-import requests
 from colorama import Fore
 
 from pkg import c_print
+from security import safe_requests
 
 
 class MagicEden:
@@ -21,7 +21,7 @@ class MagicEden:
         counter = 0
 
         while True:
-            response = requests.get(self.baseUrl + f'collections/{symbol}/listings?offset={counter}').json()
+            response = safe_requests.get(self.baseUrl + f'collections/{symbol}/listings?offset={counter}').json()
             if len(response) < 1:
                 break
 
